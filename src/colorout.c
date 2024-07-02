@@ -82,9 +82,16 @@ static int iswhitespace(const char b)
     return b == 32 || (b >= 9 && b <= 13);
 }
 
+static int isvalidbeforenumber(const char b)
+{
+    /* non variable characters such as parentheses, big marks, etc... */
+    return b == '(' || b == '+' || b == 39 || b == ',' || b == '$' || b == '/'
+        || b == '<' || b == '>' || b == '=' || b == '{' || b == '|' || b == '-';
+}
+
 static int isnumber(const char * b, int i, int len)
 {
-    if(i > 0 && !iswhitespace(b[i-1]) && b[i-1] != '-')
+    if(i > 0 && !iswhitespace(b[i-1]) && !isvalidbeforenumber(b[i-1]))
         return 0;
 
     int l = len;
