@@ -66,7 +66,7 @@ pattern_t *P = NULL;
 
 static int isletter(const char b)
 {
-    return (b >= 'A' && b <= 'Z') || (b >= 'a' && b <= 'z');
+    return (b >= 'A' && b <= 'Z') || (b >= 'a' && b <= 'z') || b == '_' || b == '.';
 }
 
 static int isword(const char * b, int i, int len)
